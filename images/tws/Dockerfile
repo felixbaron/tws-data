@@ -4,22 +4,22 @@ FROM azul/zulu-openjdk
 RUN apt-get update
 RUN apt-get install -y wget zip xvfb x11vnc openjfx
 
-# Run TWS Offline Installer
-WORKDIR /home/tws
+## Run TWS Offline Installer
+WORKDIR /home
 RUN wget https://download2.interactivebrokers.com/installers/tws/latest-standalone/tws-latest-standalone-linux-x64.sh
+RUN chmod u+x ./tws-latest*.sh
+RUN echo "\n" | /home/tws-latest-*.sh
 
-# Install xvfb and and run VNC
+## Add TWS launch script
 ENV DISPLAY :1
-ADD run.sh ./run.sh
-
-# Make files executable
+ADD run.sh /home
 RUN chmod a+x ./run.sh
-RUN chmod u+x ./tws-latest-*.sh
-
-# Optional: automation
-# https://github.com/IbcAlpha/IBC
-# https://dimon.ca/how-to-setup-ibc-and-tws-on-headless-ubuntu-in-10-minutes/
-
-# Run TWS Offline
+#
+## Optional: automation
+## https://github.com/IbcAlpha/IBC
+## https://dimon.ca/how-to-setup-ibc-and-tws-on-headless-ubuntu-in-10-minutes/
+#
+## Run TWS Offline
 EXPOSE 5900
-CMD ./run.sh
+EXPOSE 7496
+CMD /home/run.sh

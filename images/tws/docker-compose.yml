@@ -1,5 +1,9 @@
-tws:
-  build: .
-  restart: always
-  ports:
-    - "5555:5900"
+version: "3.9"
+services:
+  tws:
+    build: .
+#    restart: always
+    ports:
+      - "5555:5900"
+      - "7496:7496"
+    tty: true
