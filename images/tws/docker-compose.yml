@@ -2,8 +2,12 @@ version: "3.9"
 services:
   tws:
     build: .
-#    restart: always
+    restart: always
     ports:
       - "5555:5900"
       - "7496:7496"
     tty: true
+    volumes:
+      - tws_data:/root
+volumes:
+  tws_data: {}

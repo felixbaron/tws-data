@@ -12,4 +12,4 @@ WORKDIR /opt/ibapi/IBJts/source/pythonclient
 RUN python setup.py bdist_wheel
 RUN pip install --upgrade dist/ibapi-*.whl
 
-#CMD ["python", "/usr/src/app/src/main.py"]
+CMD ["python", "/usr/src/app/main.py"]
