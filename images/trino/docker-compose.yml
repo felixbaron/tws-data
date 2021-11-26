@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+
+  trino:
+    build:
+      context: .
+      args:
+        TRINO_VERSION: 364
+    restart: always
+    ports:
+      - "8080:8080"
+#    volumes:
+#      - trino_config:/opt/trino/etc
+#      - trino_data:/var/trino/data
+
+#volumes:
+#  trino_config: {}
+#  trino_data: {}
